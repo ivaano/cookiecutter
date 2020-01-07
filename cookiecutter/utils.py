@@ -124,11 +124,11 @@ def copytree(src, dst, symlinks=False, exist_ok=False):
             if os.path.islink(srcname):
                 linkto = os.readlink(srcname)
                 if os.path.isdir(srcname):
-                    copytree(srcname, dstname, symlinks)
+                    copytree(srcname, dstname, symlinks, exist_ok)
                 else:
                     shutil.copy2(srcname, dstname)
             elif os.path.isdir(srcname):
-                copytree(srcname, dstname, symlinks)
+                copytree(srcname, dstname, symlinks, exist_ok)
             else:
                 # Will raise a SpecialFileError for unsupported file types
                 shutil.copy2(srcname, dstname)
